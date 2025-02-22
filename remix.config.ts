@@ -1,4 +1,3 @@
 module.exports = {
-    ignoredRouteFiles: ["**/.*"], // This line should not exclude your login route.
-  };
-  
+  ignoredRouteFiles: ["**/*.test.{js,jsx,ts,tsx}", "**/*.spec.{js,jsx,ts,tsx}"],
+};

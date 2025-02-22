@@ -1,5 +1,5 @@
-import { Link } from "@remix-run/react";
 import type { MetaFunction } from "@remix-run/node";
+import { Link } from "@remix-run/react";
 
 export const meta: MetaFunction = () => {
   return [
@@ -19,15 +19,27 @@ export default function Index() {
           <h1 className="leading text-2xl font-bold text-gray-800 dark:text-gray-100">
             Welcome to ChefGPT
           </h1>
+
+          <p className="text-center text-gray-600 dark:text-gray-400">
+            Your AI-powered recipe and meal management system.
+            <br />
+            Discover, create, and manage your meals effortlessly.
+          </p>
+          <div className="flex gap-4">
+            <Link
+              to="/login"
+              className="rounded-md bg-blue-500 px-4 py-2 text-white hover:bg-blue-600"
+            >
+              Login
+            </Link>
+            <Link
+              to="/register"
+              className="rounded-md bg-blue-500 px-4 py-2 text-white hover:bg-blue-600"
+            >
+              Register
+            </Link>
+          </div>
         </header>
-        <div className="flex gap-4">
-          <Link to="/auth/login">
-            <button className="btn">Login</button>
-          </Link>
-          <Link to="/auth/register">
-            <button className="btn">Register</button>
-          </Link>
-        </div>
       </div>
     </div>
   );
