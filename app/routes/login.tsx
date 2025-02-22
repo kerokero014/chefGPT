@@ -1,7 +1,8 @@
-import { ActionFunction, json, redirect } from "@remix-run/node";
+import { ActionFunction, json } from "@remix-run/node";
 import { Form, useActionData } from "@remix-run/react";
 import { verifyUser } from "../services/userService";
 import ActionData from "../Data/ActionData";
+import { createUserSession } from "../utils/auth.server";
 
 export const action: ActionFunction = async ({ request }) => {
   const formData = await request.formData();
@@ -27,7 +28,7 @@ export const action: ActionFunction = async ({ request }) => {
     );
   }
 
-  return redirect("/dashboard");
+  return createUserSession(user.id);
 };
 
 export default function Login() {
