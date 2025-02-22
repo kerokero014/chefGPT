@@ -8,30 +8,24 @@ datasource db {
 }
 
 model User {
-  id           Int           @id @default(autoincrement())
-  email        String        @unique
+  id           Int    @id @default(autoincrement())
+  email        String @unique
   passwordHash String
-  profile      Profile?
-  savedRecipes SavedRecipe[]
-}
-
-model Profile {
-  id            Int           @id @default(autoincrement())
   firstName     String
   lastName      String
   weightGoal    Int?
   allergies     Allergy[]
   dislikes      String[]
   favoriteFoods String[]
-  userId        Int           @unique
-  user          User          @relation(fields: [userId], references: [id])
+
+  savedRecipes SavedRecipe[]
 }
 
 model Allergy {
-  id        Int     @id @default(autoincrement())
-  name      String
-  profileId Int
-  profile   Profile @relation(fields: [profileId], references: [id])
+  id     Int    @id @default(autoincrement())
+  name   String
+  userId Int
+  user   User   @relation(fields: [userId], references: [id])
 }
 
 model Recipe {
@@ -61,5 +55,3 @@ model Meal {
   mealType  String
   createdAt DateTime @default(now())
 }
-
-
