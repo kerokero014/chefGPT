@@ -11,8 +11,7 @@ model User {
   id           Int           @id @default(autoincrement())
   email        String        @unique
   passwordHash String
-  profile      Profile?      @relation(fields: [profileId], references: [id])
-  profileId    Int?
+  profile      Profile?
   savedRecipes SavedRecipe[]
 }
 
@@ -24,8 +23,8 @@ model Profile {
   allergies     Allergy[]
   dislikes      String[]
   favoriteFoods String[]
-  user          User          @relation
   userId        Int           @unique
+  user          User          @relation(fields: [userId], references: [id])
 }
 
 model Allergy {
