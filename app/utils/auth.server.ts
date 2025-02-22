@@ -3,7 +3,7 @@ import { createCookieSessionStorage, redirect } from "@remix-run/node";
 const sessionStorage = createCookieSessionStorage({
   cookie: {
     name: "auth_token",
-    secure: process.env.NODE_ENV === "production",
+    secure: process.env.NODE_ENV === "development",
     secrets: [process.env.SESSION_SECRET!],
     sameSite: "lax",
     httpOnly: true,
