@@ -1,0 +1,66 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           Int           @id @default(autoincrement())
+  email        String        @unique
+  passwordHash String
+  profile      Profile?      @relation(fields: [profileId], references: [id])
+  profileId    Int?
+  savedRecipes SavedRecipe[]
+}
+
+model Profile {
+  id            Int           @id @default(autoincrement())
+  firstName     String
+  lastName      String
+  weightGoal    Int?
+  allergies     Allergy[]
+  dislikes      String[]
+  favoriteFoods String[]
+  user          User          @relation
+  userId        Int           @unique
+}
+
+model Allergy {
+  id        Int     @id @default(autoincrement())
+  name      String
+  profileId Int
+  profile   Profile @relation(fields: [profileId], references: [id])
+}
+
+model Recipe {
+  id               Int           @id @default(autoincrement())
+  title            String
+  ingredients      String
+  instructions     String
+  nutritionalValue String
+  createdAt        DateTime      @default(now())
+  savedRecipes     SavedRecipe[]
+  meals            Meal[]
+}
+
+model SavedRecipe {
+  id       Int    @id @default(autoincrement())
+  userId   Int
+  recipeId Int
+  user     User   @relation(fields: [userId], references: [id])
+  recipe   Recipe @relation(fields: [recipeId], references: [id])
+}
+
+model Meal {
+  id        Int      @id @default(autoincrement())
+  name      String
+  recipeId  Int
+  recipe    Recipe   @relation(fields: [recipeId], references: [id])
+  mealType  String
+  createdAt DateTime @default(now())
+}
+
+
