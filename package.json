@@ -11,10 +11,15 @@
     "typecheck": "tsc"
   },
   "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.0",
+    "@mui/icons-material": "^6.4.5",
+    "@mui/material": "^6.4.5",
     "@prisma/client": "^6.4.1",
     "@remix-run/node": "^2.15.3",
     "@remix-run/react": "^2.15.3",
     "@remix-run/serve": "^2.15.3",
+    "antd": "^5.24.1",
     "bcryptjs": "^3.0.2",
     "isbot": "^4.1.0",
     "jsonwebtoken": "^9.0.2",
