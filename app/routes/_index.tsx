@@ -1,9 +1,10 @@
 import type { MetaFunction } from "@remix-run/node";
 import { Link } from "@remix-run/react";
+import { Button, Typography, Space, Card, Row, Col } from "antd";
 
 export const meta: MetaFunction = () => {
   return [
-    { title: "ChefGPt" },
+    { title: "ChefGPT" },
     {
       name: "Senior Project - Recipe and Meal Management System using OpenAI",
       content: "Welcome to ChefGPT",
@@ -13,34 +14,25 @@ export const meta: MetaFunction = () => {
 
 export default function Index() {
   return (
-    <div className="flex h-screen items-center justify-center">
-      <div className="flex flex-col items-center gap-16">
-        <header className="flex flex-col items-center gap-9">
-          <h1 className="leading text-2xl font-bold text-gray-800 dark:text-gray-100">
-            Welcome to ChefGPT
-          </h1>
-
-          <p className="text-center text-gray-600 dark:text-gray-400">
-            Your AI-powered recipe and meal management system.
-            <br />
+    <Row justify="center" align="middle" style={{ minHeight: "100vh", padding: "0 16px" }}>
+      <Col xs={24} sm={20} md={16} lg={12} xl={8} style={{ textAlign: "center" }}>
+        <Card style={{ padding: 24 }}>
+          <Typography.Title level={2}>Welcome to ChefGPT</Typography.Title>
+          <Typography.Text>
+            Your AI-powered recipe and meal management system. <br />
             Discover, create, and manage your meals effortlessly.
-          </p>
-          <div className="flex gap-4">
-            <Link
-              to="/login"
-              className="rounded-md bg-blue-500 px-4 py-2 text-white hover:bg-blue-600"
-            >
-              Login
-            </Link>
-            <Link
-              to="/register"
-              className="rounded-md bg-blue-500 px-4 py-2 text-white hover:bg-blue-600"
-            >
-              Register
-            </Link>
-          </div>
-        </header>
-      </div>
-    </div>
+          </Typography.Text>
+
+          <Space style={{ marginTop: 24 }} size="large">
+            <Button type="primary" size="large" shape="round">
+              <Link to="/login">Login</Link>
+            </Button>
+            <Button size="large" shape="round">
+              <Link to="/register">Register</Link>
+            </Button>
+          </Space>
+        </Card>
+      </Col>
+    </Row>
   );
 }

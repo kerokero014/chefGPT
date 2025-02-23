@@ -1,10 +1,28 @@
 import { prisma } from "../utils/prisma.server";
 import bcrypt from "bcryptjs";
 
-export async function createUser(email: string, password: string) {
+export async function createUser(
+  email: string,
+  password: string,
+  firstName: string,
+  lastName: string,
+  weightGoal?: number,
+  allergies?: string[],
+  dislikes?: string[],
+  favoriteFoods?: string[]
+) {
   const passwordHash = await bcrypt.hash(password, 10);
   return prisma.user.create({
-    data: { email, passwordHash },
+    data: {
+      email,
+      passwordHash,
+      firstName,
+      lastName,
+      weightGoal,
+      allergies: { create: allergies?.map(allergy => ({ name: allergy })) || [] },
+      dislikes: { set: dislikes || [] },
+      favoriteFoods: { set: favoriteFoods || [] },
+    },
   });
 }
 
