@@ -19,7 +19,9 @@ export async function createUser(
       firstName,
       lastName,
       weightGoal,
-      allergies: { create: allergies?.map(allergy => ({ name: allergy })) || [] },
+      allergies: {
+        create: allergies?.map((allergy) => ({ name: allergy })) || [],
+      },
       dislikes: { set: dislikes || [] },
       favoriteFoods: { set: favoriteFoods || [] },
     },
@@ -38,4 +40,11 @@ export async function verifyUser(email: string, password: string) {
     return null;
   }
   return user;
+}
+
+export async function getUserById(userId: string) {
+  return prisma.user.findUnique({
+    where: { id: Number(userId) },
+    select: { id: true, firstName: true, lastName: true },
+  });
 }
