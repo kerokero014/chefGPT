@@ -3,4 +3,8 @@ export default interface User {
     email: string;
     firstName: string;
     lastName: string;
+    weightGoal?: number;
+    allergies?: string[];
+    dislikes?: string[];
+    favoriteFoods?: string[];
 }

@@ -1,5 +1,5 @@
 import { Link, useFetcher } from "@remix-run/react";
-import type  UserInter from "~/Data/User.interface";
+import type UserInter from "~/Data/User.interface";
 
 export default function Navbar({ user }: { user: UserInter | null }) {
   const fetcher = useFetcher();
