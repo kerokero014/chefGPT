@@ -15,7 +15,7 @@ export default function Navbar({ user }: { user: UserInter | null }) {
       </Link>
       <div className="flex items-center space-x-4">
         {user ? (
-          <Link to={`/user/profile?userId=${user.id}`} className="text-white">
+          <Link to="/myprofile" className="text-white">
             {user.firstName} {user.lastName}
           </Link>
         ) : (
