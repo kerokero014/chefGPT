@@ -1,4 +1,5 @@
 import { Link, useFetcher } from "@remix-run/react";
+import { AppBar, Toolbar, Typography, Button, Avatar } from "@mui/material";
 import type UserInter from "~/Data/User.interface";
 
 export default function Navbar({ user }: { user: UserInter | null }) {
@@ -9,22 +10,39 @@ export default function Navbar({ user }: { user: UserInter | null }) {
   };
 
   return (
-    <nav className="bg-gray-800 p-4 flex justify-between items-center">
-      <Link to="/" className="text-white text-lg font-bold">
-        ChefGPT
-      </Link>
-      <div className="flex items-center space-x-4">
-        {user ? (
-          <Link to={`/user/profile?userId=${user.id}`} className="text-white">
-            {user.firstName} {user.lastName}
-          </Link>
-        ) : (
-          <span className="text-white">Guest</span>
-        )}
-        <button onClick={handleLogout} className="text-white">
-          Logout
-        </button>
-      </div>
-    </nav>
+    <AppBar position="static" sx={{ bgcolor: "grey.900", px: 3 }}>
+      <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
+        <Typography
+          variant="h6"
+          component={Link}
+          to="/dashboard"
+          sx={{ textDecoration: "none", color: "white", fontWeight: "bold" }}
+        >
+          ChefGPT
+        </Typography>
+        <div style={{ display: "flex", alignItems: "center", gap: "1rem" }}>
+          {user ? (
+            <Button
+              component={Link}
+              to={`/user/profile?userId=${user.id}`}
+              sx={{ color: "white", textTransform: "none" }}
+            >
+              {user.firstName} {user.lastName}
+            </Button>
+          ) : (
+            <Typography color="white">Guest</Typography>
+          )}
+          {user && (
+            <Avatar sx={{ bgcolor: "primary.main", width: 32, height: 32 }}>
+              {user.firstName[0]}
+              {user.lastName[0]}
+            </Avatar>
+          )}
+          <Button onClick={handleLogout} sx={{ color: "white" }}>
+            Logout
+          </Button>
+        </div>
+      </Toolbar>
+    </AppBar>
   );
 }
