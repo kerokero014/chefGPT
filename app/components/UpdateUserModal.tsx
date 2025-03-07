@@ -1,14 +1,5 @@
 import React from "react";
 import type User from "~/Data/User.interface";
-import {
-  Dialog,
-  DialogTitle,
-  DialogContent,
-  TextField,
-  Button,
-  Box,
-  Stack,
-} from "@mui/material";
 
 interface UpdateUserModalProps {
   formData: User;
@@ -25,78 +16,126 @@ export default function UpdateUserModal({
   handleInputChange,
   handleSubmit,
 }: UpdateUserModalProps) {
+  if (!isModalOpen) return null;
+
   return (
-    <Dialog
-      open={isModalOpen}
-      onClose={() => setIsModalOpen(false)}
-      maxWidth="sm"
-      fullWidth
-    >
-      <DialogTitle sx={{ fontWeight: "bold" }}>
-        Update User Information
-      </DialogTitle>
-      <DialogContent>
-        <Box component="form" onSubmit={handleSubmit} sx={{ mt: 2 }}>
-          <Stack spacing={2}>
-            <TextField
-              label="First Name"
+    <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
+      <div className="bg-white dark:bg-gray-800 p-6 rounded-lg shadow-lg">
+        <h3 className="text-xl font-bold mb-4">Update User Information</h3>
+        <form onSubmit={handleSubmit}>
+          <div className="mb-4">
+            <label
+              htmlFor="firstName"
+              className="block text-gray-700 dark:text-gray-300 mb-2"
+            >
+              First Name
+            </label>
+            <input
+              type="text"
+              id="firstName"
               name="firstName"
               value={formData.firstName}
               onChange={handleInputChange}
-              fullWidth
+              className="w-full px-3 py-2 border rounded"
             />
-            <TextField
-              label="Last Name"
+          </div>
+          <div className="mb-4">
+            <label
+              htmlFor="lastName"
+              className="block text-gray-700 dark:text-gray-300 mb-2"
+            >
+              Last Name
+            </label>
+            <input
+              type="text"
+              id="lastName"
               name="lastName"
               value={formData.lastName}
               onChange={handleInputChange}
-              fullWidth
+              className="w-full px-3 py-2 border rounded"
             />
-            <TextField
-              label="Email"
-              name="email"
+          </div>
+          <div className="mb-4">
+            <label
+              htmlFor="email"
+              className="block text-gray-700 dark:text-gray-300 mb-2"
+            >
+              Email
+            </label>
+            <input
               type="email"
+              id="email"
+              name="email"
               value={formData.email}
               onChange={handleInputChange}
-              fullWidth
+              className="w-full px-3 py-2 border rounded"
             />
-            <TextField
-              label="Weight Goal (kg)"
-              name="weightGoal"
+          </div>
+          <div className="mb-4">
+            <label
+              htmlFor="weightGoal"
+              className="block text-gray-700 dark:text-gray-300 mb-2"
+            >
+              Weight Goal
+            </label>
+            <input
               type="number"
+              id="weightGoal"
+              name="weightGoal"
               value={formData.weightGoal}
               onChange={handleInputChange}
-              fullWidth
+              className="w-full px-3 py-2 border rounded"
             />
-            <TextField
-              label="Allergies"
+          </div>
+          <div className="mb-4">
+            <label
+              htmlFor="allergies"
+              className="block text-gray-700 dark:text-gray-300 mb-2"
+            >
+              Allergies
+            </label>
+            <input
+              type="text"
+              id="allergies"
               name="allergies"
               value={formData.allergies}
               onChange={handleInputChange}
-              fullWidth
+              className="w-full px-3 py-2 border rounded"
             />
-            <TextField
-              label="Dislikes"
+          </div>
+          <div className="mb-4">
+            <label
+              htmlFor="dislikes"
+              className="block text-gray-700 dark:text-gray-300 mb-2"
+            >
+              Dislikes
+            </label>
+            <input
+              type="text"
+              id="dislikes"
               name="dislikes"
               value={formData.dislikes}
               onChange={handleInputChange}
-              fullWidth
+              className="w-full px-3 py-2 border rounded"
             />
-          </Stack>
-          <Box sx={{ display: "flex", justifyContent: "flex-end", mt: 3 }}>
-            <Button
+          </div>
+          <div className="flex justify-end">
+            <button
+              type="button"
+              className="mr-4 px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-700"
               onClick={() => setIsModalOpen(false)}
-              sx={{ mr: 2 }}
-              color="secondary"
             >
               Cancel
-            </Button>
-            <Button type="submit" variant="contained" color="primary">
+            </button>
+            <button
+              type="submit"
+              className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-700"
+            >
               Save
-            </Button>
-          </Box>
-        </Box>
-      </DialogContent>
-    </Dialog>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
   );
 }
