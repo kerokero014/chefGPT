@@ -1,0 +1,139 @@
+.weight-chart {
+  width: 500px;
+  max-width: 400px;
+  height: auto;
+}
+
+.profile-card {
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background-color: #ffffff;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.profile-card:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.update-button {
+  background-color: #1d4ed8;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.update-button:hover {
+  background-color: #2563eb;
+}
+
+.modal-container {
+  max-width: 500px;
+  width: 100%;
+  padding: 20px;
+  border-radius: 8px;
+  background-color: #ffffff;
+  transition: box-shadow 0.3s ease-in-out;
+}
+
+.modal-container:hover {
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.cancel-button {
+  background-color: #6b7280;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.cancel-button:hover {
+  background-color: #4b5563;
+}
+
+.save-button {
+  background-color: #1d4ed8;
+  color: #ffffff;
+  border: none;
+  border-radius: 4px;
+  padding: 10px 20px;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+
+.save-button:hover {
+  background-color: #2563eb;
+}
+
+input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #e2e8f0;
+  border-radius: 4px;
+  margin-bottom: 10px;
+  transition: border-color 0.3s ease-in-out;
+}
+
+input:focus {
+  border-color: #2563eb;
+  outline: none;
+}
+
+/* Dark mode styles */
+.dark .profile-card {
+  background-color: #1f2937;
+  border-color: #374151;
+}
+
+.dark .profile-card:hover {
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+}
+
+.dark .update-button {
+  background-color: #2563eb;
+}
+
+.dark .update-button:hover {
+  background-color: #1d4ed8;
+}
+
+.dark .modal-container {
+  background-color: #1f2937;
+}
+
+.dark .modal-container:hover {
+  box-shadow: 0 4px 8px rgba(255, 255, 255, 0.1);
+}
+
+.dark .cancel-button {
+  background-color: #4b5563;
+}
+
+.dark .cancel-button:hover {
+  background-color: #6b7280;
+}
+
+.dark .save-button {
+  background-color: #2563eb;
+}
+
+.dark .save-button:hover {
+  background-color: #1d4ed8;
+}
+
+.dark input {
+  background-color: #374151;
+  border-color: #4b5563;
+  color: #ffffff;
+}
+
+.dark input:focus {
+  border-color: #2563eb;
+}
