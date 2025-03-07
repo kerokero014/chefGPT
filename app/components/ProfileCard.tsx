@@ -4,7 +4,7 @@ import UpdateUserModal from "./UpdateUserModal";
 import { Card, CardContent, Typography, Button } from "@mui/material";
 
 export default function ProfileCard({ user }: { user: User }) {
-  console.log("ProfileCard user:", user);
+  // console.log("ProfileCard user:", user);
 
   const {
     formData,
